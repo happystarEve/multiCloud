@@ -1,0 +1,28 @@
+/* 边距 */
+.mlr40{margin-left: 40px; margin-right: 40px;}
+.mr5{margin-right: 5px;} .ml5{margin-left: 5px;}
+.mr10{margin-right: 10px;}
+.mt20{margin-top: 20px;} .ml20{margin-left: 20px;}
+.mt30{margin-top: 30px;}
+/* 宽高度 */
+.w26{width: 26px;} .h26{height: 26px;}
+
+/* 颜色 */
+.white{color: #fff;}
+.blue{color: #3589E1;}
+.yellow{color: #E6A403;}
+.deepyellow{color: #EB8B18;}
+.green{color: #2FB266;}
+.deepgreen{color: #599E1C;}
+.red{color: #E15555;}
+.deepred{color: #D83840;}
+.bluegray{color: #6D8AAB;}
+.deepgray{color: #91A7B9;}
+.purple{color: #8183F1;}
+.bgwhite{background-color: #fefefe;}
+.black{color: #222;}
+.bluegreen{color: #14EFF1;}
+
+/* 浮动 */
+.fl{float: left;}
+.fr{float: right;}

@@ -1,0 +1,239 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  background-color: #EAEDF1;
+}
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #293038;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #22282e;
+}
+.nav-a{
+  color: #fff;
+}
+.nav>li>.nav-a:hover, .nav>li>.nav-a:focus{
+  text-decoration: none;
+  color: #fff;
+  background-color: #37424f;
+}
+
+.nav-a i{
+  display: inline-block;
+  width: 25px;
+  margin-right: 0px;
+}
+
+i{
+  margin-right: 5px;
+}
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+input[type="checkbox"]{
+  margin-right: 5px;
+}
+
+/*
+ *文件列表
+ */
+.file_detail{width:100%; background: #fefefe; border: 1px solid #e3e3e3; border-radius: 4px;}
+.all_files{width:100%; height:40px; line-height:40px; border-bottom: 2px solid #dfe4e7;}
+  .all_files a{line-height: 40px; font-size: 16px; color:#4f4f4f;}
+
+/**********文件操作**************************/
+  .file_action{width:100%; background: #fefefe;}
+    .file_action input[type="checkbox"]{width:14px; height:14px; margin:0 10px; line-height: 30px;}
+    .tools_all{/*display:none;*/ height: 32px; line-height: 32px; margin-top:3px; margin-bottom: 4px; float:left;}
+    .tools{display: none; height: 32px; line-height: 32px; margin-top:3px; margin-bottom: 4px; float: left;}
+    .buttons{display: none; margin-left: 10px; margin-top: 4px; float: left;}
+    .length{display:inline-block; width:80px;}
+    /********************文件列表******************/
+    .file_list{width:100%; margin-bottom: 20px;}
+    .file_list table{width:100%;padding:0 10px;}
+    .file_list table th{text-align: left; border-top:1px solid #eeeeee; height:35px;}
+    .file_list table tr .sicon{visibility: hidden;}
+    .file_list table tr:hover td{background: #f1f9fe;}
+    .file_list table tr:hover .sicon{visibility: visible;}
+    .file_list table tr td{height:35px; border: 1px solid #eeeeee; border-left:none; border-right:none;}
+
+    /*.file_list table tr.hoverstyle td{background: #f1f9fe;}*/
+    
+    /*hover出现操作及右击出现操作*/
+    .contextMenu{display: none;position: fixed;}
+    .hoverMenu{display: none; position : fixed;}
+    .move_list{width: 95px; border:1px solid #b6b6b6; background-color: #f6f8fa;}
+    .move_list li{height: 26px; line-height: 26px; color: #373737; text-align: center;}
+    .move_list li:hover{background: url(../images/ziyuanku_sprite.png) -180px -405px no-repeat;}
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+/* 上传文件 */
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin-left: 40px;
+  margin-right: 40px;
+
+  text-align: center;
+  color: #fff;
+
+}
+.fileUpload input.upload {  
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+/* 新建文件夹 */
+#newfileitem{
+  display: none;
+}
+.btn_check{
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  padding-left: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #2FB266 !important;
+  text-decoration: none;
+  text-align: center;
+  line-height: 24px;
+  vertical-align: top;
+  background-color: #E5E5E5;
+  border: 1px solid #A2A2A2;
+  border-radius: 4px;
+}
+.btn_close{
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  padding-left: 4px;
+  color: #E15555 !important;
+  text-decoration: none;
+  text-align: center;
+  line-height: 24px;
+  vertical-align: top;
+  background-color: #E5E5E5;
+  border: 1px solid #A2A2A2;
+  border-radius: 4px;
+}
+.btn_check:hover{
+  color: #2FB266; 
+  background-color: #E1E1E1;
+}
+.btn_close:hover{
+  color: #E15555;
+  background-color: #E1E1E1;
+}
+.file_list a{color:#333; text-decoration: none;}
+.file_list a:hover{color: #333; text-decoration: underline;}
+
+/*hover出现操作及右击出现操作*/
+.contextMenu{display: none;position: fixed;}
+.hoverMenu{display: none; position : fixed;}
+.move_list{width: 95px; border:1px solid #b6b6b6; background-color: #f6f8fa;}
+.move_list ul{list-style-type: none; padding-left: 0; margin-bottom: 0;}
+.move_list li{height: 26px; line-height: 26px; color: #373737; text-align: center; list-style-type: none;}
+.move_list li:hover{color: #fff; background-color: #337AB7; border-radius: 3px;}
+
+/*复制到 移动到 弹出框*/
+.select_file{width:420px; background: #f8fafb;  display: none; margin:0 auto;}
+.folder_tree{width:420px; height:200px; border:1px solid #eef1f3; overflow-y: auto; }
+.button_box{width:100%;margin-top: 15px;}
+
+.filehide{display: none;}
