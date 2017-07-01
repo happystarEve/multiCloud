@@ -8,7 +8,7 @@ class Db {
 	/**
 	 * 数据库连接
 	 */
-	private static $_conn;
+	public static $_conn;
 
 	/**
 	 * 查询次数
@@ -19,13 +19,13 @@ class Db {
 	 * 连接数据库
 	 */
 	public static function connect($conf){
-		if (!self::$_conn = @mysql_connect($conf['host'].(empty($conf['port'])?'':':'.$conf['port']), $conf['user'], $conf['pass'])){
+		if (!self::$_conn = @mysqli_connect($conf['host'].(empty($conf['port'])?'':':'.$conf['port']), $conf['user'], $conf['pass'])){
 			throw new Exception('无法连接数据库');
 		}
-		if (!mysql_select_db($conf['database'], self::$_conn)){
+		if (!mysqli_select_db(self::$_conn, $conf['database'])){
 			throw new Exception('无法选择数据库');
 		}
-		if (!mysql_query('SET NAMES \'UTF8\'')){
+		if (!mysqli_query(self::$_conn,'SET NAMES \'UTF8\'')){
 			throw new Exception('无法设置数据库编码');
 		}
 	}
@@ -67,14 +67,14 @@ class Db {
 	 */
 	public static function query($sql){
 		self::$_countQueries ++;
-		return mysql_query($sql, self::$_conn);
+		return mysqli_query(self::$_conn, $sql);
 	}
 
 	/**
 	 * 获取一组数据
 	 */
 	public static function fetch($result){
-		return mysql_fetch_assoc($result);
+		return $result->fetch_assoc();
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Db {
 	 */
 	public static function fetchAll($result){
 		$data = array();
-		while ($i = mysql_fetch_assoc($result)){
+		while ($i = $result->fetch_assoc()){
 			$data[] = $i;
 		}
 		return $data;
@@ -92,28 +92,28 @@ class Db {
 	 * 获取单个字段
 	 */
 	public static function fetchOne($result){
-		return ($row = mysql_fetch_row($result)) ? $row[0] : null;
+		return ($row = mysqli_fetch_row($result)) ? $row[0] : null;
 	}
 
 	/**
 	 * 统计结果条数
 	 */
 	public static function countRows($result){
-		return mysql_num_rows($result);
+		return mysqli_num_rows($result);
 	}
 
 	/**
 	 * 最后插入的自动递增值
 	 */
 	public static function insertId(){
-		return mysql_insert_id();
+		return mysqli_insert_id(self::$_conn);
 	}
 
 	/**
 	 * 统计影响行数
 	 */
 	public static function affectedRows(){
-		return mysql_affected_rows();
+		return mysqli_affected_rows(self::$_conn);
 	}
 
 	/**

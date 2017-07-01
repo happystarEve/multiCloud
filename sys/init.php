@@ -22,6 +22,8 @@ require_once 'common.php';
 session_start();
 ob_start();
 
+// register_shutdown_function(function(){ var_dump(error_get_last()); });
+
 /**
  * 判断错误输出
  */
@@ -30,7 +32,7 @@ error_reporting(DEVELOPING ? E_ALL : 0);
 /**
  * 异常截获函数
  */
-set_exception_handler('exceptionHandle');
+// set_exception_handler('exceptionHandle');
 
 /**
  * 设置时区

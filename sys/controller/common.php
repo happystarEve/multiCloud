@@ -19,6 +19,7 @@ global $BOS_TEST_CONFIG;
 $GLOBALS['baiduClient'] = new BosClient($BOS_TEST_CONFIG);
 
 class Controller_Common {
+	//主页面逻辑
 	static public function main(){
 		if(!empty($_SESSION)){
 			//获取默认的安全策略、存储空间的名称
@@ -2784,6 +2785,7 @@ class Controller_Common {
 		include 'view/index.php';
 	}
 
+	//登录逻辑
 	static public function login(){
 		if(!empty($_POST)){
 			$_POST['userName'] = isset($_POST['userName']) ? trim($_POST['userName']) : '';
@@ -2813,11 +2815,13 @@ class Controller_Common {
 		include 'view/login.php';
 	}
 
+	//退出逻辑
 	static public function logout(){
 		session_destroy();
 		redirect( SITE_URL.'login' );
 	}
 
+	//基本设置逻辑
 	static public function baseset(){
 		if(!empty($_SESSION)){
 			$rs = Db::select('userName','passwordHashs','userSecretHash','userSecretEncrypted')
@@ -2869,6 +2873,7 @@ class Controller_Common {
 		include 'view/baseSet.php';
 	}
 
+	//安全策略逻辑
 	static public function safeset(){
 		if(!empty($_SESSION)){
 			//获取默认的安全策略、存储空间的名称
@@ -3267,6 +3272,7 @@ class Controller_Common {
 		}
 		include 'view/safeSet.php';
 	}
+
 	static public function checkfile(){
 		if(!empty($_GET['objectName'])){
 			$rs_Exist = Db::select('securityName','objectName','objectId')

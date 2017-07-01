@@ -32,8 +32,8 @@ class Controller_Treenode{
 	        ON c1.parentId=c2.folderId 
 	 
 	        WHERE c1.folderId='$folderId' ";
-	    $result = mysql_query($sql);
-	    $row = mysql_fetch_array($result);//现在$row数组存了父亲节点的ID和名称信息
+	    $result = mysqli_query(Db::$_conn,$sql);
+	    $row = mysqli_fetch_array($result,MYSQLI_BOTH);//现在$row数组存了父亲节点的ID和名称信息
 	 
 	    // 将树状路径保存在数组里面
 	    $path = array();
@@ -54,10 +54,10 @@ class Controller_Treenode{
 
 	static public function insert_children($folderId, $parentId) {
 	    // 获得当前节点的所有孩子节点（直接孩子，没有孙子）
-	    $result = mysql_query("SELECT * FROM foldertree WHERE parentId='$folderId'");
+	    $result = mysqli_query(Db::$_conn,"SELECT * FROM foldertree WHERE parentId='$folderId'");
 	 
 	    // 遍历孩子节点，打印节点
-	    while ($row = mysql_fetch_array($result)) 
+	    while ($row = mysqli_fetch_array($result,MYSQLI_BOTH)) 
 	    {
 	        $newInsert = Db::insert('foldertree')->rows(array(
 				'folderName' => $row['folderName'],
@@ -77,10 +77,10 @@ class Controller_Treenode{
 
 	static public function delete_children($folderId) {
 	    // 获得当前节点的所有孩子节点（直接孩子，没有孙子）
-	    $result = mysql_query("SELECT * FROM foldertree WHERE parentId='$folderId'");
+	    $result = mysqli_query(Db::$_conn, "SELECT * FROM foldertree WHERE parentId='$folderId'");
 	 
 	    // 遍历孩子节点，打印节点
-	    while ($row = mysql_fetch_array($result)) 
+	    while ($row = mysqli_fetch_array($result,MYSQLI_BOTH)) 
 	    {
 	       // 递归所有的孩子节点
 	       Controller_Treenode::delete_children($row['folderId']); 
@@ -90,11 +90,11 @@ class Controller_Treenode{
 
 	static public function display_children($folderId){
 	    // 获得当前节点的所有孩子节点（直接孩子，没有孙子）
-	    $result = mysql_query("SELECT * FROM foldertree WHERE parentId='$folderId'");
+	    $result = mysqli_query(Db::$_conn, "SELECT * FROM foldertree WHERE parentId='$folderId'");
 	 	$childrenArray = array();
 	 	
 	    // 遍历孩子节点，打印节点
-	    while ($row = mysql_fetch_array($result)) 
+	    while ($row = mysqli_fetch_array($result,MYSQLI_BOTH)) 
 	    {
 	        $children[0]['folderId'] = $row['folderId'];
 	        $children[0]['folderName'] = $row['folderName'];
