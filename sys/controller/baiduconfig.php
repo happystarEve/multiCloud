@@ -8,10 +8,10 @@ define('__BOS_CLIENT_ROOT', dirname(__DIR__));
 $BOS_TEST_CONFIG =
     array(
         'credentials' => array(
-            'ak' => 'fa9ec475418444b18ae1932d69a0b0f0',
-            'sk' => '4b247763beb64828aea223600382fefb',
+            'ak' => '',
+            'sk' => '',
         ),
-        'endpoint' => 'http://gz.bcebos.com',
+        'endpoint' => '',
     );
 
 $STDERR = fopen('php://stderr', 'w+');
