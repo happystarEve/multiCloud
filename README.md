@@ -32,5 +32,5 @@
 （2）multi-cloud 为搭建成功后的主要功能演示视频。
 （3）只需将代码下载后，放在wamp/www/XXX文件夹中，在数据库中导入cloud.sql, 访问：localhost/XXX 
 
-注：使用的是本人百度云对象存储BOS和阿里云对象存储OSS，请上传文件明白系统使用功能后，删除文件，避免产生过多费用，感激不尽。
+注：
 可重新配置sys/controller/baiduconfig.php 和 sys/controller/aliyunconfig.php，更换成自己的百度云对象存储BOS和阿里云对象存储OSS。
